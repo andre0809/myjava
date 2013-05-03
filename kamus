@@ -1,0 +1,63 @@
+//program kamus //
+class Translator 
+      
+  {   
+      Kamus i;
+      public Translator(Kamus i)
+      {
+      this.i=i;
+      }
+      
+      public String menerjemahkan(String kata)
+      {
+       int indx=-1; 
+       for(int x=0;x<i.awal.length;x++)
+       {
+    if(kata.equals(i.awal[x]))
+	  {
+	   indx=x;
+	   break;
+	  }
+	  
+       }
+       if(indx<0)
+       {
+       return "Kata tidak ditemukan";
+       }
+       else       
+       return i.akhir[indx];
+      }
+      
+      
+      
+   }
+   class Kamus
+   {
+   
+   public String [] awal;
+   public String [] akhir;
+   public String namakamus;
+   
+   public Kamus(String []awal, String []akhir, String namakamus)
+      {      
+      this.awal=awal;
+      this.akhir=akhir;
+      this.namakamus=namakamus;
+      }
+   }
+   public class translate
+   { 
+   public static void main(String[]args)
+   {
+   String [] indo = {"manusia","kucing","anjing","pohon"};
+   String [] eng= {"human","cat","dog","tree"};
+   
+    Kamus ie=new Kamus(indo,eng,"Indo-Eng");
+    Kamus ei=new Kamus(eng,indo,"Eng-Indo");
+    Translator saya= new Translator(ie);
+    Translator kamu= new Translator(ei);
+    System.out.println(saya.menerjemahkan(args[0]));
+    System.out.println(kamu.menerjemahkan(args[1]));
+   }
+   }
+      
